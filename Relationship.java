@@ -1,4 +1,4 @@
-public enum Relationship{
+public enum Relationship {
     spouses,
     granny,
     grandpa,
