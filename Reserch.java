@@ -33,6 +33,7 @@ public class Reserch {
         for (Node t : tree) {
             if (t.re == re) {
                 res.add(t.p1.fullName);
+                
             }
         }
         return res;
