@@ -9,26 +9,26 @@ public class Main {
         Person sergey = new Person("Сергей Петров", 62);
 
         GeoTree gt = new GeoTree();
-        gt.appendMother(irina, masha);
-        gt.appendDad(vasya, masha);
-        gt.appendGranny(lena, masha);
-        gt.appendGrandpa(ivan, masha);
-        gt.appendGranny(olga, masha);
-        gt.appendGrandpa(sergey, masha);
-        gt.appendMother(lena, irina);
-        gt.appendDad(ivan, irina);
-        gt.appendMother(olga, vasya);
-        gt.appendDad(sergey, vasya);
-        gt.appendSpouse(olga, sergey);
-        gt.appendSpouse(lena, ivan);
-        gt.appendSpouse(irina, vasya);
+        gt.append(irina, masha, Relationship.mother, Relationship.children);;
+        gt.append(vasya, masha, Relationship.dad, Relationship.children);
+        gt.append(lena, masha,Relationship.granny, Relationship.grandchild);
+        gt.append(ivan, masha,Relationship.grandpa,Relationship.grandchild);
+        gt.append(olga, masha, Relationship.granny, Relationship.grandchild);
+        gt.append(sergey, masha,Relationship.grandpa, Relationship.grandchild);
+        gt.append(lena, irina, Relationship.mother, Relationship.children);
+        gt.append(ivan, irina, Relationship.dad, Relationship.children);
+        gt.append(olga, vasya, Relationship.mother, Relationship.children);
+        gt.append(sergey, vasya, Relationship.dad, Relationship.children);
+        gt.append(olga, sergey, Relationship.spouses, Relationship.spouses);
+        gt.append(lena, ivan, Relationship.spouses, Relationship.spouses);
+        gt.append(irina, vasya, Relationship.spouses, Relationship.spouses);
 
-        System.out.println(new Reserch(gt).spend(irina,
-                Relationship.mother));
+        System.out.println(new Reserch(gt).spend(masha,
+                Relationship.children));
 
-        new Reserch(gt).whoIsOlder(ivan);
+        new Reserch(gt).whoIsOlder(olga);
 
-        System.out.println(new Reserch(gt).degreeOfrelatioship(Relationship.granny));
+        System.out.println(new Reserch(gt).degreeOfrelatioship(Relationship.spouses));
     }
 
 }
