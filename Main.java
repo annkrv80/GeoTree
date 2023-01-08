@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
 public class Main {
     public static void main(String[] args) {
         Person irina = new Person("Ирина Петрова", 30);
@@ -8,7 +12,7 @@ public class Main {
         Person olga = new Person("Ольга Петрова", 60);
         Person sergey = new Person("Сергей Петров", 62);
 
-        GeoTree gt = new GeoTree();
+        var gt = new GeoTree();
         gt.append(irina, masha, Relationship.mother, Relationship.children);;
         gt.append(vasya, masha, Relationship.dad, Relationship.children);
         gt.append(lena, masha,Relationship.granny, Relationship.grandchild);
@@ -29,6 +33,18 @@ public class Main {
         new Reserch(gt).whoIsOlder(olga);
 
         System.out.println(new Reserch(gt).degreeOfrelatioship(Relationship.spouses));
+
+        ArrayList<Person> family = new ArrayList<>();
+        family.add(irina);
+        family.add(vasya);
+        family.add(masha);
+        family.add(olga);
+        family.add(sergey);
+        family.add(lena);
+        family.add(ivan);
+        System.out.println(family);
+        Collections.sort(family, new SortByAge());
+        System.out.println(family);
     }
 
 }
